@@ -1,4 +1,4 @@
-const GAS_ENDPOINT = import.meta.env.VITE_GAS_ENDPOINT || import.meta.env.GAS_ENDPOINT;
+const GAS_ENDPOINT = import.meta.env.GAS_ENDPOINT;
 const CACHE_KEY = 'portfolioData';
 const CACHE_EXPIRY = 60 * 1000; // 1 分鐘（單位：毫秒）
 
