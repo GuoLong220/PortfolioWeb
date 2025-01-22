@@ -2,6 +2,8 @@
 
 這是一個個人作品集網站，展示技能、專案和時間軸。網站使用 Google Apps Script (GAS) 從 Google Sheets 動態獲取資料，並通過 Cloudflare Pages 部署。
 
+Google Sheets 副本：https://docs.google.com/spreadsheets/d/1S5eZJoV7So7Ltf48Jc3we7X78jzdv9VB7yUuL63nPqk/edit?usp=sharing
+
 ---
 
 ## 目錄
