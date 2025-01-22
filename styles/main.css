@@ -1,0 +1,336 @@
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a1a;
+  --accent-green: #00ff9d;
+  --accent-blue: #00b7ff;
+  --accent-purple: #bd00ff;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.1;
+  background: linear-gradient(45deg, var(--accent-green), var(--accent-blue), var(--accent-purple));
+  filter: blur(100px);
+  animation: bg-animation 15s ease infinite;
+}
+
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.terminal {
+  width: 90%;
+  max-width: 800px;
+  background: var(--bg-secondary);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.terminal-header {
+  background: #2a2a2a;
+  padding: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+.terminal-content {
+  padding: 1.5rem;
+  font-family: 'Fira Code', monospace;
+  color: var(--accent-green);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* 導航欄容器 */
+.main-nav {
+  background-color: var(--bg-secondary);
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* 導航內容容器 */
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  /* 垂直居中對齊 */
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;   /* 為絕對定位的選單提供參考點 */
+}
+
+/* 導航連結列表 */
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;    /* 清除默認外邊距 */
+  padding: 0;   /* 清除默認內邊距 */
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 1em;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent-blue);
+}
+
+/* 漢堡按鈕樣式 */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-toggle svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--text-primary);
+  transition: fill 0.3s ease;
+}
+
+.menu-toggle:hover svg {
+  fill: var(--accent-blue);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;      /* 緊貼 .nav-content 底部 */
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-secondary);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    margin: 0;      /* 清除任何可能的間隙 */
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .nav-links a {
+    padding: 10px 0;
+    display: block;
+  }
+}
+.section {
+  padding: 5rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* 大螢幕樣式 */
+@media (min-width: 768px) {
+  .about-content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .profile-avatar {
+    flex: 0 0 150px; /* 固定圖片容器的寬度 */
+    margin-right: 20px; /* 圖片和文字之間的間距 */
+  }
+
+  .profile-info {
+    flex: 1; /* 讓文字區域佔滿剩餘空間 */
+    margin-left: 3%; /* 文字向左移動約 20% */
+  }
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+/* .profile-avatar {
+  width: 150px;
+  height: 150px;
+} */
+
+.profile-avatar {
+  position: relative;
+  width: 150px; /* 調整為你需要的尺寸 */
+  height: 150px; /* 調整為你需要的尺寸 */
+}
+
+.avatar-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.profile-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%; /* 讓圖片顯示為正圓形 */
+  object-fit: cover; /* 確保圖片填滿容器 */
+  z-index: 1; /* 讓圖片覆蓋在 SVG 上方 */
+}
+
+.profile-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.profile-info .title {
+  color: var(--accent-blue);
+  margin-bottom: 1rem;
+}
+
+.profile-info .bio {
+  color: var(--text-secondary);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.skills-filter {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--accent-blue);
+  color: var(--bg-primary);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+footer {
+  background: var(--bg-secondary);
+  padding: 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  fill: var(--text-primary);
+  transition: fill 0.3s ease;
+}
+
+.social-icon:hover {
+  fill: var(--accent-blue);
+}
+
+.hidden {
+  display: none;
+}

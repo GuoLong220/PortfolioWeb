@@ -1,0 +1,138 @@
+@keyframes bg-animation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.typing-text {
+  white-space: pre-wrap; /* 保留換行和空白 */
+  overflow: hidden;
+  animation: typing 3.5s steps(40, end) forwards; /* 只保留打字動畫 */
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.skill-card {
+  animation: fadeInUp 0.6s ease backwards;
+  animation-delay: calc(0.1s * var(--i));
+}
+
+/* Timeline 容器 */
+.timeline-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 每行三個卡片 */
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Timeline 項目 */
+.timeline-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Timeline 卡片 */
+.timeline-card {
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Timeline 點 */
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  position: absolute;
+  left: -36px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Timeline 內容 */
+.timeline-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.timeline-date {
+  font-size: 0.9em;
+  color: var(--text-secondary);
+}
+
+.timeline-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.timeline-link {
+  color: var(--accent-blue);
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.timeline-link:hover {
+  text-decoration: underline;
+}
+
+/* 響應式設計 */
+@media (max-width: 1024px) {
+  .timeline-container {
+    grid-template-columns: repeat(2, 1fr); /* 每行兩個卡片 */
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline-container {
+    grid-template-columns: 1fr; /* 每行一個卡片 */
+  }
+}
+
+.project-card {
+  animation: fadeInUp 0.6s ease backwards;
+  animation-delay: calc(0.1s * var(--i));
+}
+
+.splash-screen.fade-out {
+  animation: fadeOut 0.5s ease forwards;
+}
