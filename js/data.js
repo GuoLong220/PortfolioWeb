@@ -1,11 +1,11 @@
 let GAS_ENDPOINT;
 
-if (import.meta.env.MODE === 'development') {
-  // 開發環境：從 import.meta.env 讀取
-  GAS_ENDPOINT = import.meta.env.VITE_GAS_ENDPOINT;
-} else {
-  // 生產環境：從 Cloudflare 環境變數讀取
+// 統一從 window.env 讀取環境變數
+try {
   GAS_ENDPOINT = process.env.VITE_GAS_ENDPOINT || window.env.VITE_GAS_ENDPOINT;
+} catch {
+  // 用於本地開發或備用
+  GAS_ENDPOINT = import.meta.env.VITE_GAS_ENDPOINT;
 }
 
 const CACHE_KEY = 'portfolioData';
