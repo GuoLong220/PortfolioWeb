@@ -2,7 +2,7 @@ let GAS_ENDPOINT;
 
 // 統一從 window.env 讀取環境變數
 try {
-  GAS_ENDPOINT = process.env.VITE_GAS_ENDPOINT || window.env.VITE_GAS_ENDPOINT;
+  GAS_ENDPOINT = process.env.NEXT_PUBLIC_GAS_ENDPOINT;
 } catch {
   // 用於本地開發或備用
   GAS_ENDPOINT = import.meta.env.VITE_GAS_ENDPOINT;

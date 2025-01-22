@@ -46,7 +46,7 @@ Vite 會啟動一個本地開發伺服器，並在終端中顯示訪問網址（
 2. 選擇「Environment variables」。
 3. 點擊「Add variable」。
 4. 輸入以下內容：
-    * Variable name: VITE_GAS_ENDPOINT
+    * Variable name: `NEXT_PUBLIC_GAS_ENDPOINT`
     * Value: https://script.google.com/macros/s/你的部署ID/exec
 5. 點擊「Save」。
 
