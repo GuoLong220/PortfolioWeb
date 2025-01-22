@@ -1,4 +1,13 @@
-const GAS_ENDPOINT = import.meta.env.VITE_GAS_ENDPOINT;
+let GAS_ENDPOINT;
+
+if (import.meta.env.MODE === 'development') {
+  // 開發環境：從 import.meta.env 讀取
+  GAS_ENDPOINT = import.meta.env.VITE_GAS_ENDPOINT;
+} else {
+  // 生產環境：從 Cloudflare 環境變數讀取
+  GAS_ENDPOINT = process.env.VITE_GAS_ENDPOINT || window.env.VITE_GAS_ENDPOINT;
+}
+
 const CACHE_KEY = 'portfolioData';
 const CACHE_EXPIRY = 60 * 1000; // 1 分鐘（單位：毫秒）
 
